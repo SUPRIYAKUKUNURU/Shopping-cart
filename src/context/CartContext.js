@@ -1,25 +1,27 @@
-// import React, { createContext, useState } from "react";
+import React, { createContext, useState } from 'react';
 
-// // Create the context
-// export const CartContext = createContext();
+export const CartContext = createContext();
 
-// // CartProvider component
-// export const CartProvider = ({ children }) => {
-//   const [cart, setCart] = useState([]);
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
 
-//   // Add to cart function
-//   const addToCart = (product) => {
-//     setCart((prevCart) => [...prevCart, product]);
-//   };
+  const addToCart = (product) => {
+    if (!cart.some((item) => item.id === product.id)) {
+      setCart([...cart, product]);
+    } else {
+      alert("Product is already in the cart!");
+    }
+  };
 
-//   // Remove from cart function
-//   const removeFromCart = (productId) => {
-//     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-//   };
+  const removeFromCart = (productId) => {
+    setCart(cart.filter((item) => item.id !== productId));
+  };
 
-//   return (
-//     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
-//       {children}
-//     </CartContext.Provider>
-//   );
-// };
+  const clearCart = () => setCart([]);
+
+  return (
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+      {children}
+    </CartContext.Provider>
+  );
+};

@@ -1,13 +1,20 @@
-import React from 'react'
-import ProductList from './ProductList'
+import React from 'react';
+import { CartProvider } from './context/CartContext';
+import ProductList from './components/ProductList';
+import Cart from './components/Cart';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+
+const App = () => {
   return (
-    <div>
-      <h1>Shopping cart</h1>
-      <ProductList />
-    </div>
-  )
-}
+    <CartProvider>
+      <div>
+        <h1>Shopping Cart</h1>
+        <ProductList />
+        <Cart />
+      </div>
+    </CartProvider>
+  );
+};
 
-export default App
+export default App;
