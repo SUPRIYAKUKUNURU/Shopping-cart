@@ -83,7 +83,7 @@ const ProductList = () => {
                     variant="top"
                     src={product.thumbnail}
                     alt={product.title}
-                    style={{ height: '200px', objectFit: 'cover' }}
+                    style={{ height: '180px', objectFit: 'cover' }}
                   />
                   <Card.Body>
                     <Card.Title>{product.title}</Card.Title>
